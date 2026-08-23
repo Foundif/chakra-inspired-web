@@ -1,0 +1,140 @@
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
+import { Loader2, LockKeyhole, Mail, Phone, UserRound } from "lucide-react";
+import { toast } from "sonner";
+import Seo from "@/components/Seo";
+import { supabase } from "@/integrations/supabase/client";
+import { useAuth } from "@/hooks/useAuth";
+import { brand } from "@/data/chakra";
+
+const CustomerLogin = () => {
+  const nav = useNavigate();
+  const { user } = useAuth();
+  const [mode, setMode] = useState<"login" | "signup">("login");
+  const [busy, setBusy] = useState(false);
+  const [sent, setSent] = useState(false);
+  const [form, setForm] = useState({ name: "", phone: "", email: "", password: "" });
+
+  useEffect(() => {
+    if (user) nav("/account", { replace: true });
+  }, [user, nav]);
+
+  const set = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement>) =>
+    setForm((f) => ({ ...f, [k]: e.target.value }));
+
+  const submit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setBusy(true);
+    try {
+      if (mode === "signup") {
+        const { data, error } = await supabase.auth.signUp({
+          email: form.email.trim(),
+          password: form.password,
+          options: {
+            emailRedirectTo: `${window.location.origin}/account`,
+            data: { full_name: form.name.trim(), phone: form.phone.trim() },
+          },
+        });
+        if (error) throw error;
+        if (!data.session) {
+          setSent(true);
+          toast.success("Account created — check your email to confirm.");
+        }
+      } else {
+        const { error } = await supabase.auth.signInWithPassword({
+          email: form.email.trim(),
+          password: form.password,
+        });
+        if (error) throw error;
+        toast.success("Welcome back!");
+        nav("/account", { replace: true });
+      }
+    } catch (err: any) {
+      toast.error(err?.message ?? "Something went wrong. Please try again.");
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  const reset = async () => {
+    if (!form.email.trim()) return toast.error("Enter your email first.");
+    const { error } = await supabase.auth.resetPasswordForEmail(form.email.trim(), {
+      redirectTo: `${window.location.origin}/reset-password`,
+    });
+    if (error) return toast.error(error.message);
+    toast.success("Password reset link sent to your email.");
+  };
+
+  return (
+    <>
+      <Seo title="Customer Login | Chakra Fiber" description="Sign in to your Chakra Fiber account to view your plan, connection details and raise support requests." />
+      <section className="gradient-navy text-white pt-28 pb-16 lg:pt-36 lg:pb-24 relative overflow-hidden">
+        <div className="absolute inset-0 grid-bg opacity-60" aria-hidden="true" />
+        <div className="absolute -top-32 -left-20 w-[30rem] h-[30rem] rounded-full bg-accent/20 blur-3xl" aria-hidden="true" />
+        <div className="relative container-luxe max-w-md">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="rounded-3xl glass-dark p-6 sm:p-8">
+            <h1 className="font-display text-2xl sm:text-3xl font-extrabold">
+              {mode === "login" ? "Customer Login" : "Create Your Account"}
+            </h1>
+            <p className="mt-2 text-sm text-white/60">
+              {mode === "login"
+                ? "Access your plan details, renewals and support requests."
+                : `Register with ${brand.name} to manage your connection online.`}
+            </p>
+
+            {sent ? (
+              <div className="mt-6 rounded-2xl bg-white/8 border border-white/15 p-4 text-sm text-white/75">
+                We sent a confirmation link to <strong>{form.email}</strong>. Click it to activate your account, then sign in.
+              </div>
+            ) : (
+              <form onSubmit={submit} className="mt-6 space-y-3.5">
+                {mode === "signup" && (
+                  <>
+                    <label className="flex items-center gap-2.5 rounded-2xl bg-white/8 border border-white/15 px-3.5 py-3">
+                      <UserRound size={16} className="text-white/50 shrink-0" />
+                      <input required value={form.name} onChange={set("name")} placeholder="Full name" className="bg-transparent outline-none w-full text-sm placeholder:text-white/40" />
+                    </label>
+                    <label className="flex items-center gap-2.5 rounded-2xl bg-white/8 border border-white/15 px-3.5 py-3">
+                      <Phone size={16} className="text-white/50 shrink-0" />
+                      <input required value={form.phone} onChange={set("phone")} placeholder="Mobile number" className="bg-transparent outline-none w-full text-sm placeholder:text-white/40" />
+                    </label>
+                  </>
+                )}
+                <label className="flex items-center gap-2.5 rounded-2xl bg-white/8 border border-white/15 px-3.5 py-3">
+                  <Mail size={16} className="text-white/50 shrink-0" />
+                  <input required type="email" value={form.email} onChange={set("email")} placeholder="Email address" className="bg-transparent outline-none w-full text-sm placeholder:text-white/40" />
+                </label>
+                <label className="flex items-center gap-2.5 rounded-2xl bg-white/8 border border-white/15 px-3.5 py-3">
+                  <LockKeyhole size={16} className="text-white/50 shrink-0" />
+                  <input required type="password" minLength={6} value={form.password} onChange={set("password")} placeholder="Password" className="bg-transparent outline-none w-full text-sm placeholder:text-white/40" />
+                </label>
+
+                <button type="submit" disabled={busy} className="btn-orange w-full justify-center text-sm disabled:opacity-60">
+                  {busy && <Loader2 size={16} className="animate-spin" />}
+                  {mode === "login" ? "Sign In" : "Create Account"}
+                </button>
+              </form>
+            )}
+
+            <div className="mt-5 flex items-center justify-between text-xs text-white/60">
+              <button type="button" onClick={() => { setMode(mode === "login" ? "signup" : "login"); setSent(false); }} className="font-semibold hover:text-white">
+                {mode === "login" ? "New customer? Register" : "Already registered? Sign in"}
+              </button>
+              {mode === "login" && (
+                <button type="button" onClick={reset} className="hover:text-white">Forgot password?</button>
+              )}
+            </div>
+
+            <p className="mt-5 text-[11px] text-white/45 leading-relaxed">
+              Need help? Call <a href={`tel:${brand.phone.replace(/\s/g, "")}`} className="text-accent font-semibold">{brand.phone}</a> or{" "}
+              <Link to="/contact" className="text-accent font-semibold">contact support</Link>.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+    </>
+  );
+};
+
+export default CustomerLogin;
