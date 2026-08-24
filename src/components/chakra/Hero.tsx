@@ -12,7 +12,7 @@ import imgOffice from "@/assets/chakra/office.jpg";
 
 const gallery = [
   { src: imgFamily, alt: "Family streaming on high-speed fiber internet at home", caption: "Unlimited home fiber" },
-  { src: imgInstall, alt: "Technician splicing fiber optic cable", caption: "Fast 24–48 hr installation" },
+  { src: imgInstall, alt: "Technician splicing fiber optic cable", caption: "Fast installation" },
   { src: imgOps, alt: "Network operations centre racks", alt2: "", caption: "99.9% network uptime" },
   { src: imgOffice, alt: "Customer care team at Chakra Fiber office", caption: "24×7 local support" },
 ];
