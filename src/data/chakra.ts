@@ -33,7 +33,7 @@ export const heroStats = [
 
 export const heroSlides = [
   { title: "Unlimited Data Plans", text: "No FUP drama. Stream, game and work without limits.", icon: "Infinity" },
-  { title: "Free Installation", text: "Zero-cost setup on annual broadband plans.", icon: "Wrench" },
+  { title: "Free Installation", text: "Zero-cost installation for all plans.", icon: "Wrench" },
   { title: "350+ HD TV Channels", text: "Crystal-clear digital cable bundled with your fiber.", icon: "Tv" },
   { title: "21+ OTT Platforms", text: "Your favourite apps included on select plans.", icon: "Clapperboard" },
   { title: "Telephone Connection", text: "Crystal-clear landline over the same fiber line.", icon: "PhoneCall" },
