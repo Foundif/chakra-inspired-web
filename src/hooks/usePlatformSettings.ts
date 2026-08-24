@@ -33,7 +33,7 @@ export const usePlatformSettings = () => {
     };
     load();
     const ch = supabase
-      .channel("platform_settings_rt")
+      .channel(`platform_settings_rt_${Math.random().toString(36).slice(2)}`)
       .on("postgres_changes", { event: "*", schema: "public", table: "platform_settings" }, () => load())
       .subscribe();
     return () => { mounted = false; supabase.removeChannel(ch); };
@@ -59,7 +59,7 @@ export const useAdminRenewalInfo = () => {
     };
     load();
     const ch = supabase
-      .channel("platform_settings_admin_rt")
+      .channel(`platform_settings_admin_rt_${Math.random().toString(36).slice(2)}`)
       .on("postgres_changes", { event: "*", schema: "public", table: "platform_settings" }, () => load())
       .subscribe();
     return () => { mounted = false; supabase.removeChannel(ch); };

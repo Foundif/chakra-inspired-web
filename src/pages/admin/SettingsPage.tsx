@@ -3,6 +3,7 @@ import AdminLayout from "./AdminLayout";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import MediaUpload from "@/components/admin/MediaUpload";
+import ChangePassword from "@/components/admin/ChangePassword";
 
 const FIELDS: { key: string; label: string; type?: string; help?: string }[] = [
   { key: "company_name", label: "Company name" },
@@ -44,6 +45,7 @@ const SettingsPage = () => {
     <AdminLayout>
       <h1 className="font-display text-3xl font-extrabold mb-1">Settings</h1>
       <p className="text-muted-foreground mb-6">All values reflect on the public site instantly.</p>
+      <ChangePassword />
       <div className="bg-card rounded-2xl border border-border p-6 grid md:grid-cols-2 gap-5">
         {FIELDS.map((f) => (
           <div key={f.key} className={f.key === "tagline" || f.key.startsWith("address") ? "md:col-span-2" : ""}>
