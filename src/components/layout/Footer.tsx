@@ -109,6 +109,7 @@ const Footer = () => {
         <div className="mt-14 pt-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-white/50">
           <p>© {year} {brand.legal}. All rights reserved.</p>
           <p>{brand.tagline} · Aruppukottai, Tamil Nadu</p>
+          <p>Designed by <span className="font-semibold text-[#E3B341]">Foundif Innovations</span></p>
         </div>
       </div>
     </footer>
