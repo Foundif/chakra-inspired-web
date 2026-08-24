@@ -16,7 +16,7 @@ const milestones = [
   { year: "2013", title: "A cable operator on Thiruchuli Road", text: "We began as a small neighbourhood cable TV service, knocking on doors and earning trust one home at a time." },
   { year: "2016", title: "First fiber in the ground", text: "We laid our first fiber routes and started bundling digital TV with true broadband for early subscribers." },
   { year: "2019", title: "Full fiber-to-the-home rollout", text: "Our own fiber ring went live across Aruppukottai town, replacing ageing copper with gigabit-ready lines." },
-  { year: "2022", title: "OTT bundles & business internet", text: "We crossed 2,500 subscribers and launched OTT entertainment bundles plus dedicated links for local businesses." },
+  { year: "2022", title: "OTT bundles & business internet", text: "We crossed 1,000+ subscribers and launched OTT entertainment bundles plus dedicated links for local businesses." },
   { year: "2026", title: "5,000+ connections strong", text: "Today our network carries unlimited broadband, 350+ channels, OTT and telephone services across the district." },
 ];
 
@@ -75,7 +75,7 @@ const About = () => (
             align="left"
             eyebrow="Our Story"
             title="Built street by street, in our own town"
-            subtitle="For over 13 years we have grown from a small cable operator on Thiruchuli Road into a full fiber-to-the-home provider serving thousands of families and businesses."
+            subtitle="For over 13 years we have grown from a small cable operator on Aruppukottai into a full fiber-to-the-home provider serving thousands of families and businesses."
           />
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <p>
