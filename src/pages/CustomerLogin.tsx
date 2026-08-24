@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Loader2, LockKeyhole, Mail, Phone, UserRound } from "lucide-react";
+import { FileText, LifeBuoy, Loader2, LockKeyhole, Mail, Phone, UserRound, Wifi } from "lucide-react";
 import { toast } from "sonner";
 import Seo from "@/components/Seo";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 import { brand } from "@/data/chakra";
+import heroImg from "@/assets/chakra/fiber-install.jpg";
 
 const CustomerLogin = () => {
   const nav = useNavigate();
@@ -72,7 +73,7 @@ const CustomerLogin = () => {
       <section className="gradient-navy text-white pt-28 pb-16 lg:pt-36 lg:pb-24 relative overflow-hidden">
         <div className="absolute inset-0 grid-bg opacity-60" aria-hidden="true" />
         <div className="absolute -top-32 -left-20 w-[30rem] h-[30rem] rounded-full bg-accent/20 blur-3xl" aria-hidden="true" />
-        <div className="relative container-luxe max-w-md">
+        <div className="relative container-luxe max-w-5xl grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="rounded-3xl glass-dark p-6 sm:p-8">
             <h1 className="font-display text-2xl sm:text-3xl font-extrabold">
               {mode === "login" ? "Customer Login" : "Create Your Account"}
@@ -130,6 +131,36 @@ const CustomerLogin = () => {
               Need help? Call <a href={`tel:${brand.phone.replace(/\s/g, "")}`} className="text-accent font-semibold">{brand.phone}</a> or{" "}
               <Link to="/contact" className="text-accent font-semibold">contact support</Link>.
             </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="relative rounded-3xl overflow-hidden min-h-[240px] lg:min-h-[540px] order-first lg:order-none"
+          >
+            <img src={heroImg} alt="Chakra Fiber technicians installing a fiber connection" className="absolute inset-0 w-full h-full object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0d1425] via-[#0d1425]/40 to-transparent" aria-hidden="true" />
+            <div className="relative h-full flex flex-col justify-end p-6 sm:p-8">
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-accent">Customer Portal</p>
+              <h2 className="mt-2 font-display text-2xl sm:text-3xl font-extrabold text-white leading-tight">
+                Your connection, in your hands.
+              </h2>
+              <ul className="mt-4 space-y-2.5">
+                {[
+                  { icon: Wifi, text: "Check your active plan and renewal date" },
+                  { icon: FileText, text: "View invoices and payment history" },
+                  { icon: LifeBuoy, text: "Raise and track support requests" },
+                ].map((b) => (
+                  <li key={b.text} className="flex items-center gap-3 text-sm text-white/80">
+                    <span className="w-8 h-8 rounded-full bg-white/10 border border-white/15 grid place-items-center shrink-0">
+                      <b.icon size={15} className="text-accent" />
+                    </span>
+                    {b.text}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </motion.div>
         </div>
       </section>

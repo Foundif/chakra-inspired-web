@@ -4,7 +4,8 @@ import { useAuth } from "@/hooks/useAuth";
 import {
   LayoutDashboard, Users, Package, Cable, ReceiptIndianRupee, LifeBuoy, Activity,
   BarChart3, UserCog, Settings, ScrollText, LogOut, ExternalLink, Menu, X, Bell,
-  MessageSquare, Search, ChevronDown, Plus, FileText, Headphones, ShieldCheck, AlertTriangle, PanelLeftClose
+  MessageSquare, Search, ChevronDown, Plus, FileText, Headphones, ShieldCheck, AlertTriangle, PanelLeftClose,
+  FileSpreadsheet
 } from "lucide-react";
 import { usePlatformSettings, useAdminRenewalInfo } from "@/hooks/usePlatformSettings";
 import { supabase } from "@/integrations/supabase/client";
@@ -21,6 +22,7 @@ const items = [
   { to: "/admin/plans", label: "Plans & Packages", icon: Package },
   { to: "/admin/connections", label: "Connections", icon: Cable },
   { to: "/admin/invoices", label: "Invoices & Payments", icon: ReceiptIndianRupee },
+  { to: "/admin/tally", label: "Tally Export", icon: FileSpreadsheet },
   { to: "/admin/tickets", label: "Tickets & Support", icon: LifeBuoy },
   { to: "/admin/network", label: "Network Monitoring", icon: Activity },
   { to: "/admin/reports", label: "Reports & Analytics", icon: BarChart3 },
