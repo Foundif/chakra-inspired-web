@@ -53,7 +53,7 @@ const Header = () => {
               <img
                 src={logoAsset}
                 alt={`${brand.name} — ${brand.tagline}`}
-                className={`w-auto object-contain transition-all duration-500 ${scrolled ? "h-8" : "h-11"} ${onDark ? "brightness-0 invert" : ""}`}
+                className={`w-auto object-contain transition-all duration-500 ${scrolled ? "h-10" : "h-14"} ${onDark ? "brightness-0 invert" : ""}`}
               />
             </Link>
 
@@ -114,23 +114,13 @@ const Header = () => {
             </nav>
 
             <div className="hidden lg:flex items-center gap-2">
-              {!scrolled && (
-                <a
-                  href={`tel:${brand.phone.replace(/\s/g, "")}`}
-                  className={`inline-flex items-center gap-2 text-[13px] font-semibold px-3 py-2 rounded-full transition-colors ${
-                    onDark ? "text-white/85 hover:text-white" : "text-foreground/70 hover:text-accent"
-                  }`}
-                >
-                  <Phone size={14} /> {brand.phone}
-                </a>
-              )}
               <Link
                 to="/customer-login"
                 className={`inline-flex items-center gap-1.5 text-[13px] font-semibold px-4 py-2 rounded-full border transition-colors ${
                   onDark ? "border-white/25 text-white hover:bg-white/10" : "border-border text-foreground hover:border-accent hover:text-accent"
                 }`}
               >
-                <UserRound size={14} /> Login
+                <UserRound size={14} /> Customer Login
               </Link>
               <Link to="/contact" className="btn-orange text-[13px] py-2.5 px-5">
                 Get Connection <ArrowUpRight size={15} />
@@ -210,7 +200,7 @@ const Header = () => {
               className="absolute top-0 right-0 h-full w-[86%] max-w-sm bg-background shadow-card flex flex-col"
             >
               <div className="flex items-center justify-between p-5 border-b border-border">
-                <img src={logoAsset} alt={brand.name} className="h-9 w-auto object-contain" />
+                <img src={logoAsset} alt={brand.name} className="h-11 w-auto object-contain" />
                 <button onClick={() => setOpen(false)} aria-label="Close menu" className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center">
                   <X size={18} />
                 </button>
