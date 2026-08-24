@@ -152,7 +152,7 @@ const Home = () => {
                   <div className="text-xs text-white/50 uppercase tracking-wider">Local rating</div>
                 </div>
                 <div className="h-10 w-px bg-white/10" />
-                <p className="text-sm text-white/65">Rated by subscribers across Aruppukottai and Thiruchuli Road.</p>
+                <p className="text-sm text-white/65">Rated by subscribers across Aruppukottai Taluk</p>
               </div>
             </Reveal>
           </div>
@@ -259,7 +259,7 @@ const Home = () => {
         <div className="relative container-luxe">
           <SectionHeading
             eyebrow="Customer Reviews"
-            title="5,000+ homes and businesses already switched"
+            title="Why Customers Choose Us"
             subtitle="Real feedback from subscribers across our service area."
           />
           <Testimonials />
