@@ -20,7 +20,7 @@ export const brand = {
   justdial:
     "https://www.justdial.com/Aruppukottai/Chakra-Networks-Marakadai-Bus-Stop-Opposite-Thiruchuli-Road/9999P4566-4566-150801163108-P1W9_BZDET",
   facebook: "https://facebook.com/",
-  instagram: "https://instagram.com/",
+  instagram: "https://www.instagram.com/chakrafibernet",
   mapsQuery: "Chakra Networks Thiruchuli Road Aruppukottai",
 };
 

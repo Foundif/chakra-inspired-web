@@ -57,28 +57,25 @@ const FloatingCTA = () => {
 
   return (
     <>
-      {/* Desktop stack */}
-      <div className="fixed bottom-6 right-5 z-40 hidden md:flex flex-col items-end gap-3">
-        {actions.map((a) => <Btn key={a.key} a={a} />)}
-        <AnimatePresence>
-          {showTop && (
-            <motion.button
-              initial={{ opacity: 0, scale: 0.7 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.7 }}
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              aria-label="Scroll to top"
-              className="group relative w-12 h-12 rounded-full bg-navy text-white shadow-soft flex items-center justify-center hover:scale-110 transition-transform"
-            >
-              <span className="pointer-events-none absolute right-full mr-3 whitespace-nowrap rounded-lg bg-navy px-2.5 py-1.5 text-xs font-semibold text-white opacity-0 translate-x-1 transition-all group-hover:opacity-100 group-hover:translate-x-0">
-                Back to top
-              </span>
-              <ArrowUp size={18} />
-            </motion.button>
-          )}
-        </AnimatePresence>
-      </div>
+      {/* Back to top (desktop, sits left of the FAB) */}
+      <AnimatePresence>
+        {showTop && (
+          <motion.button
+            initial={{ opacity: 0, scale: 0.7 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.7 }}
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            aria-label="Scroll to top"
+            className="group fixed bottom-7 right-24 z-40 hidden md:flex w-12 h-12 rounded-full bg-navy text-white shadow-soft items-center justify-center hover:scale-110 transition-transform"
+          >
+            <span className="pointer-events-none absolute right-full mr-3 whitespace-nowrap rounded-lg bg-navy px-2.5 py-1.5 text-xs font-semibold text-white opacity-0 translate-x-1 transition-all group-hover:opacity-100 group-hover:translate-x-0">
+              Back to top
+            </span>
+            <ArrowUp size={18} />
+          </motion.button>
+        )}
+      </AnimatePresence>
 
-      {/* Mobile FAB */}
-      <div className="fixed bottom-5 right-4 z-40 md:hidden flex flex-col items-end gap-2.5">
+      {/* Expandable FAB (all viewports) */}
+      <div className="fixed bottom-5 right-4 md:bottom-6 md:right-5 z-40 flex flex-col items-end gap-2.5">
         <AnimatePresence>
           {expanded &&
             actions.map((a, i) => (

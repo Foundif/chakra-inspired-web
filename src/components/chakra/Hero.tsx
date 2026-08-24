@@ -100,7 +100,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.18 }}
             className="mt-4 lg:mt-6 text-[15px] lg:text-lg text-white/65 max-w-xl leading-relaxed"
           >
-            Lightning-fast internet, HD TV, OTT entertainment and reliable local support with {brand.name}.
+            Lightning-fast internet, HD TV, OTT entertainment, unlimited telephone calls and reliable local support with {brand.name}.
           </motion.p>
 
           <motion.div
