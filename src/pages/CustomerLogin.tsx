@@ -127,7 +127,7 @@ const CustomerLogin = () => {
               )}
             </div>
 
-            <p className="mt-5 text-[11px] text-white/45 leading-relaxed">
+            <p className="mt-5 text-[15px] text-white/45 leading-relaxed">
               Need help? Call <a href={`tel:${brand.phone.replace(/\s/g, "")}`} className="text-accent font-semibold">{brand.phone}</a> or{" "}
               <Link to="/contact" className="text-accent font-semibold">contact support</Link>.
             </p>
