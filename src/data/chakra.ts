@@ -162,7 +162,7 @@ export const installSteps = [
 export const faqs = [
   { q: "How long does a new Chakra Fiber connection take?", a: "Where fiber already runs on your street, most homes are activated immediately of the feasibility survey." },
   { q: "Is the data really unlimited?", a: "Yes. Every home plan is truly unlimited with no fair-usage throttling. Your plan speed stays the same all month." },
-  { q: "Do you charge for installation?", a: "Yes, Installation is free on term plans" },
+  { q: "Do you charge for installation?", a: "No,Installation is free on term plans" },
   { q: "Can I get TV channels and internet on one bill?", a: "Yes. Cable TV, OTT bundles and telephone can all be added to your broadband account and billed together." },
   { q: "What happens if my internet stops working?", a: "Call or WhatsApp our 24×7 helpline. Most faults are resolved remotely within minutes; field visits are scheduled the same day." },
   { q: "How do I renew my plan?", a: "Renew online through the customer portal, via UPI on WhatsApp, or at our Aruppukottai office. Loyalty discounts apply on annual renewals." },
