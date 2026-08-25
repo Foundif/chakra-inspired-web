@@ -71,7 +71,7 @@ export type Brand = { name: string; domain: string };
 export const ottApps: Brand[] = [
   { name: "Amazon Prime Lite", domain: "primevideo.com" },
   { name: "Disney+ Hotstar", domain: "hotstar.com" },
-  { name: "Sun NXT", domain: "sunnxt.com" },
+  { name: "Sun NXT", domain: "sunnetwork.in" },
   { name: "ZEE5", domain: "zee5.com" },
   { name: "ALT Balaji", domain: "altbalaji.com" },
   { name: "Sony LIV", domain: "sonyliv.com" },
@@ -84,14 +84,14 @@ export const ottApps: Brand[] = [
 
 export const tvChannels: Brand[] = [
   { name: "Sun TV", domain: "sunnetwork.in" },
-  { name: "K TV", domain: "sunnxt.com" },
+  { name: "K TV", domain: "sunnetwork.in" },
   { name: "Star Vijay", domain: "hotstar.com" },
   { name: "Zee Tamil", domain: "zee5.com" },
-  { name: "Kalaignar TV", domain: "kalaignartv.com" },
-  { name: "Jaya TV", domain: "jayatv.in" },
-  { name: "Sun Music", domain: "sunmusic.in" },
+  { name: "Kalaignar TV", domain: "kalaignartvnetwork.com" },
+  { name: "Jaya TV", domain: "jayatv.com" },
+  { name: "Sun Music", domain: "sunnetwork.in" },
   { name: "Raj TV", domain: "rajtvnet.in" },
-  { name: "Polimer TV", domain: "polimer.tv" },
+  { name: "Polimer TV", domain: "polimernews.com" },
   { name: "News7 Tamil", domain: "news7tamil.live" },
   { name: "Thanthi TV", domain: "thanthitv.com" },
   { name: "Colors Tamil", domain: "voot.com" },
