@@ -85,22 +85,25 @@ const Home = () => {
         </div>
       </section>
 
-      {/* PLANS */}
+      {/* PLANS / BUNDLES */}
       <section className="py-20 md:py-28 bg-secondary/50">
         <div className="container-luxe">
           <SectionHeading
-            eyebrow="Broadband Plans"
-            title="Unlimited fiber at honest, local pricing"
-            subtitle="Every home plan is truly unlimited. No FUP throttling, no surprise bills, no lock-in tricks."
+            eyebrow="Plans"
+            title="Pick the Bundle That Fits Your Home"
+            subtitle="We keep pricing simple and personal — message our team with your requirements and we'll recommend the right plan and current pricing for your address."
           />
-          <PlanCards items={plans} />
-          <Reveal delay={0.2}>
-            <div className="text-center mt-10">
-              <Link to="/plans" className="btn-ghost-dark">Compare all plans <ArrowUpRight size={16} /></Link>
-            </div>
-          </Reveal>
+          <BundleCards items={bundles} />
+          <p className="text-center text-sm text-muted-foreground mt-8">
+            All plans include free installation and 24x7 support. Exact pricing depends on your address and requirements —{" "}
+            <Link to="/contact" className="font-semibold text-accent">contact us</Link> for a personalised quote.
+          </p>
         </div>
       </section>
+
+      <EntertainmentSection />
+      <AddonServicesSection />
+
 
       {/* SERVICES */}
       <section className="py-20 md:py-28">
