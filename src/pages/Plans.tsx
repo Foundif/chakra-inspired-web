@@ -67,6 +67,11 @@ const Plans = () => {
         </div>
       </section>
 
+      <EntertainmentSection />
+      <AddonServicesSection />
+
+
+
       <section className="py-16 md:py-24 bg-secondary/50">
         <div className="container-luxe">
           <SectionHeading eyebrow="Plan FAQ" title="Billing, speeds and installation" />
