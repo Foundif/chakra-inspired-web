@@ -5,11 +5,15 @@ import Seo from "@/components/Seo";
 import Reveal from "@/components/sections/Reveal";
 import Hero from "@/components/chakra/Hero";
 import SectionHeading from "@/components/chakra/SectionHeading";
-import PlanCards from "@/components/chakra/PlanCards";
+import BundleCards from "@/components/chakra/BundleCards";
+import EntertainmentSection from "@/components/chakra/EntertainmentSection";
+import AddonServicesSection from "@/components/chakra/AddonServicesSection";
 import FaqAccordion from "@/components/chakra/FaqAccordion";
 import Testimonials from "@/components/chakra/Testimonials";
 import EnquiryForm from "@/components/chakra/EnquiryForm";
-import { brand, coverageAreas, faqs, installSteps, plans, services, trustBadges, whyUs } from "@/data/chakra";
+import { brand, coverageAreas, faqs, installSteps, services, trustBadges, whyUs } from "@/data/chakra";
+import { bundles } from "@/data/bundles";
+
 import { getIcon } from "@/lib/icons";
 import fiberInstall from "@/assets/chakra/fiber-install.jpg";
 import networkOps from "@/assets/chakra/network-ops.jpg";
