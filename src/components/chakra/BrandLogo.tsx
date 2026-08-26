@@ -3,10 +3,11 @@ import type { Brand } from "@/data/bundles";
 
 const token = import.meta.env.VITE_LOVABLE_CONNECTOR_LOGO_DEV_API_KEY as string | undefined;
 
-/** Real brand logo tile (Logo.dev), with a clean text chip fallback. */
+/** Real brand logo tile (uploaded asset or Logo.dev), with a clean text chip fallback. */
 const BrandLogo = ({ brand }: { brand: Brand }) => {
-  const [failed, setFailed] = useState(!token);
-  const src = `https://img.logo.dev/${brand.domain}?token=${token}&size=96&format=png&retina=true`;
+  const [failed, setFailed] = useState(!brand.logo && !token);
+  const src = brand.logo ?? `https://img.logo.dev/${brand.domain}?token=${token}&size=96&format=png&retina=true`;
+
 
   return (
     <div className="flex items-center gap-2.5 rounded-2xl border border-border bg-card px-3.5 py-2.5 shadow-soft hover:border-accent/40 transition-colors">
