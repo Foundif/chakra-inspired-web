@@ -226,13 +226,11 @@ export const CustomersAdmin = () => (
       { name: "payment_link", label: "Payment link for this customer", full: true },
       { name: "address", label: "Address", full: true },
       { name: "area", label: "Area / locality" },
-      { name: "city", label: "City" },
-      { name: "status", label: "Status", type: "select", options: ["active", "inactive", "suspended"].map((v) => ({ value: v, label: pretty(v) })) },
+      { name: "status", label: "Status", type: "select", options: ["lead", "active", "suspended", "closed"].map((v) => ({ value: v, label: pretty(v) })) },
       { name: "joined_on", label: "Joined on", type: "date" },
-      { name: "aadhaar_ref", label: "ID reference" },
       { name: "notes", label: "Notes", type: "textarea", full: true },
     ]}
-    defaults={() => ({ status: "active", city: "Aruppukottai", joined_on: new Date().toISOString().slice(0, 10) })}
+    defaults={() => ({ status: "active", joined_on: new Date().toISOString().slice(0, 10) })}
   />
 );
 
