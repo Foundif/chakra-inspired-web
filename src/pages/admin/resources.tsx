@@ -219,10 +219,11 @@ export const CustomersAdmin = () => (
       { key: "joined_on", label: "Joined On", hideOnMobile: true, render: (r) => dateFmt(r.joined_on) },
     ]}
     fields={[
+      { name: "customer_code", label: "Customer ID (portal login)", required: true },
       { name: "full_name", label: "Full name", required: true },
-      { name: "phone", label: "Phone", type: "tel", required: true },
+      { name: "phone", label: "Phone (portal password)", type: "tel", required: true },
       { name: "email", label: "Email", type: "email" },
-      { name: "alt_phone", label: "Alternate phone", type: "tel" },
+      { name: "payment_link", label: "Payment link for this customer", full: true },
       { name: "address", label: "Address", full: true },
       { name: "area", label: "Area / locality" },
       { name: "city", label: "City" },
