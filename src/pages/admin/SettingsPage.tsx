@@ -17,6 +17,8 @@ const FIELDS: { key: string; label: string; type?: string; help?: string }[] = [
   { key: "address_line2", label: "Address line 2" },
   { key: "city", label: "City / state / pincode" },
   { key: "gstin", label: "GSTIN" },
+  { key: "upi_id", label: "UPI ID for customer payments", help: "e.g. chakrafiber@okhdfcbank — shown as a QR code in the customer portal." },
+  { key: "upi_payee_name", label: "UPI payee name", help: "Name shown in the customer's UPI app." },
   { key: "indiamart_url", label: "IndiaMART URL", type: "url" },
   { key: "google_maps_url", label: "Google Maps URL", type: "url" },
   { key: "instagram_url", label: "Instagram URL", type: "url" },

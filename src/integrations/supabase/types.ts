@@ -121,6 +121,7 @@ export type Database = {
           account_no: string | null
           address: string | null
           created_at: string
+          customer_id: string | null
           full_name: string | null
           id: string
           phone: string | null
@@ -131,6 +132,7 @@ export type Database = {
           account_no?: string | null
           address?: string | null
           created_at?: string
+          customer_id?: string | null
           full_name?: string | null
           id: string
           phone?: string | null
@@ -141,13 +143,22 @@ export type Database = {
           account_no?: string | null
           address?: string | null
           created_at?: string
+          customer_id?: string | null
           full_name?: string | null
           id?: string
           phone?: string | null
           plan_name?: string | null
           updated_at?: string
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "customer_profiles_customer_id_fkey"
+            columns: ["customer_id"]
+            isOneToOne: false
+            referencedRelation: "isp_customers"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       funnel_events: {
         Row: {
@@ -316,7 +327,9 @@ export type Database = {
           id: string
           joined_on: string
           notes: string | null
+          payment_link: string | null
           phone: string
+          portal_user_id: string | null
           status: Database["public"]["Enums"]["connection_status"]
           updated_at: string
         }
@@ -330,7 +343,9 @@ export type Database = {
           id?: string
           joined_on?: string
           notes?: string | null
+          payment_link?: string | null
           phone: string
+          portal_user_id?: string | null
           status?: Database["public"]["Enums"]["connection_status"]
           updated_at?: string
         }
@@ -344,7 +359,9 @@ export type Database = {
           id?: string
           joined_on?: string
           notes?: string | null
+          payment_link?: string | null
           phone?: string
+          portal_user_id?: string | null
           status?: Database["public"]["Enums"]["connection_status"]
           updated_at?: string
         }
@@ -386,6 +403,7 @@ export type Database = {
           due_date: string | null
           id: string
           invoice_no: string | null
+          payment_link: string | null
           period_end: string | null
           period_start: string | null
           status: Database["public"]["Enums"]["invoice_status"]
@@ -400,6 +418,7 @@ export type Database = {
           due_date?: string | null
           id?: string
           invoice_no?: string | null
+          payment_link?: string | null
           period_end?: string | null
           period_start?: string | null
           status?: Database["public"]["Enums"]["invoice_status"]
@@ -414,6 +433,7 @@ export type Database = {
           due_date?: string | null
           id?: string
           invoice_no?: string | null
+          payment_link?: string | null
           period_end?: string | null
           period_start?: string | null
           status?: Database["public"]["Enums"]["invoice_status"]
@@ -942,6 +962,8 @@ export type Database = {
           phone_secondary: string | null
           tagline: string | null
           updated_at: string
+          upi_id: string | null
+          upi_payee_name: string | null
           whatsapp_number: string | null
         }
         Insert: {
@@ -962,6 +984,8 @@ export type Database = {
           phone_secondary?: string | null
           tagline?: string | null
           updated_at?: string
+          upi_id?: string | null
+          upi_payee_name?: string | null
           whatsapp_number?: string | null
         }
         Update: {
@@ -982,6 +1006,8 @@ export type Database = {
           phone_secondary?: string | null
           tagline?: string | null
           updated_at?: string
+          upi_id?: string | null
+          upi_payee_name?: string | null
           whatsapp_number?: string | null
         }
         Relationships: []
@@ -1057,6 +1083,7 @@ export type Database = {
         }
         Returns: boolean
       }
+      my_customer_id: { Args: never; Returns: string }
     }
     Enums: {
       app_role: "admin" | "moderator" | "user" | "super_admin"

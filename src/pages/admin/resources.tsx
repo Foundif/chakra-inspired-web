@@ -219,19 +219,18 @@ export const CustomersAdmin = () => (
       { key: "joined_on", label: "Joined On", hideOnMobile: true, render: (r) => dateFmt(r.joined_on) },
     ]}
     fields={[
+      { name: "customer_code", label: "Customer ID (portal login)", required: true },
       { name: "full_name", label: "Full name", required: true },
-      { name: "phone", label: "Phone", type: "tel", required: true },
+      { name: "phone", label: "Phone (portal password)", type: "tel", required: true },
       { name: "email", label: "Email", type: "email" },
-      { name: "alt_phone", label: "Alternate phone", type: "tel" },
+      { name: "payment_link", label: "Payment link for this customer", full: true },
       { name: "address", label: "Address", full: true },
       { name: "area", label: "Area / locality" },
-      { name: "city", label: "City" },
-      { name: "status", label: "Status", type: "select", options: ["active", "inactive", "suspended"].map((v) => ({ value: v, label: pretty(v) })) },
+      { name: "status", label: "Status", type: "select", options: ["lead", "active", "suspended", "closed"].map((v) => ({ value: v, label: pretty(v) })) },
       { name: "joined_on", label: "Joined on", type: "date" },
-      { name: "aadhaar_ref", label: "ID reference" },
       { name: "notes", label: "Notes", type: "textarea", full: true },
     ]}
-    defaults={() => ({ status: "active", city: "Aruppukottai", joined_on: new Date().toISOString().slice(0, 10) })}
+    defaults={() => ({ status: "active", joined_on: new Date().toISOString().slice(0, 10) })}
   />
 );
 
@@ -317,14 +316,14 @@ export const InvoicesAdmin = () => (
     table="isp_invoices"
     title="Invoices & Payments"
     singular="Invoice"
-    searchKeys={["invoice_no", "notes"]}
-    filters={[{ key: "status", label: "All Status", options: ["paid", "unpaid", "overdue", "cancelled"] }]}
+    searchKeys={["invoice_no"]}
+    filters={[{ key: "status", label: "All Status", options: ["draft", "sent", "paid", "overdue", "cancelled"] }]}
     columns={({ lookup }) => [
       { key: "invoice_no", label: "Invoice", render: (r) => <span className="font-semibold">{r.invoice_no}</span> },
       { key: "customer_id", label: "Customer", render: (r) => lookup("isp_customers", r.customer_id) },
-      { key: "amount", label: "Amount", render: (r) => <span className="font-bold">{inr(Number(r.amount ?? 0) + Number(r.tax ?? 0))}</span> },
-      { key: "issued_on", label: "Issued", hideOnMobile: true, render: (r) => dateFmt(r.issued_on) },
-      { key: "due_on", label: "Due", hideOnMobile: true, render: (r) => dateFmt(r.due_on) },
+      { key: "amount", label: "Amount", render: (r) => <span className="font-bold">{inr(Number(r.amount ?? 0) + Number(r.tax_amount ?? 0))}</span> },
+      { key: "period_start", label: "Period", hideOnMobile: true, render: (r) => dateFmt(r.period_start) },
+      { key: "due_date", label: "Due", hideOnMobile: true, render: (r) => dateFmt(r.due_date) },
       { key: "status", label: "Status", render: (r) => <Pill tone={statusTone(r.status)}>{pretty(r.status)}</Pill> },
     ]}
     fields={[
@@ -332,19 +331,18 @@ export const InvoicesAdmin = () => (
       { name: "customer_id", label: "Customer", type: "select", required: true },
       { name: "connection_id", label: "Connection", type: "select" },
       { name: "amount", label: "Amount (₹)", type: "number", required: true },
-      { name: "tax", label: "Tax (₹)", type: "number" },
+      { name: "tax_amount", label: "Tax (₹)", type: "number" },
       { name: "period_start", label: "Period from", type: "date" },
       { name: "period_end", label: "Period to", type: "date" },
-      { name: "issued_on", label: "Issued on", type: "date" },
-      { name: "due_on", label: "Due on", type: "date" },
-      { name: "status", label: "Status", type: "select", options: ["unpaid", "paid", "overdue", "cancelled"].map((v) => ({ value: v, label: pretty(v) })) },
-      { name: "notes", label: "Notes", type: "textarea", full: true },
+      { name: "due_date", label: "Due on", type: "date" },
+      { name: "payment_link", label: "Payment link for this invoice", full: true },
+      { name: "status", label: "Status", type: "select", options: ["draft", "sent", "paid", "overdue", "cancelled"].map((v) => ({ value: v, label: pretty(v) })) },
     ]}
     defaults={(rows) => ({
       invoice_no: nextSerial("INV", rows.map((r) => r.invoice_no)),
-      status: "unpaid",
-      tax: 0,
-      issued_on: new Date().toISOString().slice(0, 10),
+      status: "sent",
+      tax_amount: 0,
+      due_date: new Date().toISOString().slice(0, 10),
     })}
   />
 );
