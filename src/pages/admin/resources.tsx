@@ -340,9 +340,9 @@ export const InvoicesAdmin = () => (
     ]}
     defaults={(rows) => ({
       invoice_no: nextSerial("INV", rows.map((r) => r.invoice_no)),
-      status: "unpaid",
-      tax: 0,
-      issued_on: new Date().toISOString().slice(0, 10),
+      status: "sent",
+      tax_amount: 0,
+      due_date: new Date().toISOString().slice(0, 10),
     })}
   />
 );
