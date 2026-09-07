@@ -5,7 +5,7 @@ import {
   LayoutDashboard, Users, Package, Cable, ReceiptIndianRupee, LifeBuoy, Activity,
   BarChart3, UserCog, Settings, ScrollText, LogOut, ExternalLink, Menu, X, Bell,
   MessageSquare, Search, ChevronDown, Plus, FileText, Headphones, ShieldCheck, AlertTriangle, PanelLeftClose,
-  FileSpreadsheet
+  FileSpreadsheet, Upload
 } from "lucide-react";
 import { usePlatformSettings, useAdminRenewalInfo } from "@/hooks/usePlatformSettings";
 import { supabase } from "@/integrations/supabase/client";
@@ -19,6 +19,7 @@ import { cn } from "@/lib/utils";
 const items = [
   { to: "/admin", label: "Dashboard", icon: LayoutDashboard, end: true },
   { to: "/admin/customers", label: "Customers", icon: Users },
+  { to: "/admin/customers/import", label: "Import Customers", icon: Upload },
   { to: "/admin/plans", label: "Plans & Packages", icon: Package },
   { to: "/admin/connections", label: "Connections", icon: Cable },
   { to: "/admin/invoices", label: "Invoices & Payments", icon: ReceiptIndianRupee },

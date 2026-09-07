@@ -35,6 +35,7 @@ import Reports from "./pages/admin/Reports";
 import Logs from "./pages/admin/Logs";
 import NetworkMonitoring from "./pages/admin/NetworkMonitoring";
 import TallyExport from "./pages/admin/TallyExport";
+import CustomerImport from "./pages/admin/CustomerImport";
 import { CustomersAdmin, PlansAdmin, ConnectionsAdmin, InvoicesAdmin, PaymentsAdmin, TicketsAdmin, StaffAdmin } from "./pages/admin/resources";
 import MaintenanceGate from "./components/MaintenanceGate";
 
@@ -65,6 +66,7 @@ const App = () => (
             <Route path="/admin/settings" element={<SettingsPage />} />
             <Route path="/admin/maintenance" element={<MaintenancePage />} />
             <Route path="/admin/customers" element={<CustomersAdmin />} />
+            <Route path="/admin/customers/import" element={<CustomerImport />} />
             <Route path="/admin/plans" element={<PlansAdmin />} />
             <Route path="/admin/connections" element={<ConnectionsAdmin />} />
             <Route path="/admin/invoices" element={<InvoicesAdmin />} />
